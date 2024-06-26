@@ -829,6 +829,8 @@ impl From<AVPixelFormat> for Pixel {
 
             #[cfg(feature = "rk")]
             AV_PIX_FMT_NV15 => Pixel::NV15,
+            #[cfg(feature = "rk")]
+            AV_PIX_FMT_NV20 => Pixel::NV20,
 
             #[cfg(feature = "ffmpeg_7_0")]
             AV_PIX_FMT_D3D12 => Pixel::D3D12,
