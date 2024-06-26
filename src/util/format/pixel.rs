@@ -285,7 +285,8 @@ pub enum Pixel {
     YUVA444P16,
 
     XYZ12,
-    NV20,
+
+    // NV20,
     AYUV64,
 
     P010LE,
@@ -417,6 +418,8 @@ pub enum Pixel {
 
     #[cfg(feature = "rk")]
     NV15,
+    #[cfg(feature = "rk")]
+    NV20,
 
     #[cfg(feature = "ffmpeg_7_0")]
     D3D12,
@@ -830,7 +833,7 @@ impl From<AVPixelFormat> for Pixel {
             #[cfg(feature = "rk")]
             AV_PIX_FMT_NV15 => Pixel::NV15,
             #[cfg(feature = "rk")]
-            AV_PIX_FMT_NV20 => Pixel::NV20,
+            AVPixelFormat::AV_PIX_FMT_NV20 => Pixel::NV20,
 
             #[cfg(feature = "ffmpeg_7_0")]
             AV_PIX_FMT_D3D12 => Pixel::D3D12,
@@ -1129,7 +1132,10 @@ impl From<Pixel> for AVPixelFormat {
             Pixel::YUVA444P16 => AV_PIX_FMT_YUVA444P16,
 
             Pixel::XYZ12 => AV_PIX_FMT_XYZ12,
-            Pixel::NV20 => AV_PIX_FMT_NV20,
+
+            #[cfg(feature = "rk")]
+            Pixel::NV20 => AVPixelFormat::AV_PIX_FMT_NV20,
+            
             Pixel::AYUV64 => AV_PIX_FMT_AYUV64,
 
             Pixel::P010LE => AV_PIX_FMT_P010LE,
