@@ -194,6 +194,7 @@ pub enum Pixel {
     GBRP12LE,
     GBRP14BE,
     GBRP14LE,
+
     GBRAP,
     GBRAP16BE,
     GBRAP16LE,
@@ -413,6 +414,9 @@ pub enum Pixel {
     GBRAP14BE,
     #[cfg(feature = "ffmpeg_6_1")]
     GBRAP14LE,
+
+    #[cfg(feature = "rk")]
+    NV15,
 
     #[cfg(feature = "ffmpeg_7_0")]
     D3D12,
@@ -822,6 +826,9 @@ impl From<AVPixelFormat> for Pixel {
             AV_PIX_FMT_GBRAP14BE => Pixel::GBRAP14BE,
             #[cfg(feature = "ffmpeg_6_1")]
             AV_PIX_FMT_GBRAP14LE => Pixel::GBRAP14LE,
+
+            #[cfg(feature = "rk")]
+            AV_PIX_FMT_NV15 => Pixel::NV15,
 
             #[cfg(feature = "ffmpeg_7_0")]
             AV_PIX_FMT_D3D12 => Pixel::D3D12,
@@ -1249,6 +1256,9 @@ impl From<Pixel> for AVPixelFormat {
             Pixel::GBRAP14BE => AV_PIX_FMT_GBRAP14BE,
             #[cfg(feature = "ffmpeg_6_1")]
             Pixel::GBRAP14LE => AV_PIX_FMT_GBRAP14LE,
+
+            #[cfg(feature = "rk")]
+            Pixel::NV15 => AV_PIX_FMT_NV15,
 
             #[cfg(feature = "ffmpeg_7_0")]
             Pixel::D3D12 => AV_PIX_FMT_D3D12,
