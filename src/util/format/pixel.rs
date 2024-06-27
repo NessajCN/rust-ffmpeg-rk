@@ -416,9 +416,9 @@ pub enum Pixel {
     #[cfg(feature = "ffmpeg_6_1")]
     GBRAP14LE,
 
-    #[cfg(feature = "rk")]
+    #[cfg(all(feature = "rk", target_arch = "aarch64"))]
     NV15,
-    #[cfg(feature = "rk")]
+    #[cfg(all(feature = "rk", target_arch = "aarch64"))]
     NV20,
 
     #[cfg(feature = "ffmpeg_7_0")]
@@ -830,9 +830,9 @@ impl From<AVPixelFormat> for Pixel {
             #[cfg(feature = "ffmpeg_6_1")]
             AV_PIX_FMT_GBRAP14LE => Pixel::GBRAP14LE,
 
-            #[cfg(feature = "rk")]
+            #[cfg(all(feature = "rk", target_arch = "aarch64"))]
             AV_PIX_FMT_NV15 => Pixel::NV15,
-            #[cfg(feature = "rk")]
+            #[cfg(all(feature = "rk", target_arch = "aarch64"))]
             AVPixelFormat::AV_PIX_FMT_NV20 => Pixel::NV20,
 
             #[cfg(feature = "ffmpeg_7_0")]
@@ -1133,9 +1133,6 @@ impl From<Pixel> for AVPixelFormat {
 
             Pixel::XYZ12 => AV_PIX_FMT_XYZ12,
 
-            #[cfg(feature = "rk")]
-            Pixel::NV20 => AVPixelFormat::AV_PIX_FMT_NV20,
-            
             Pixel::AYUV64 => AV_PIX_FMT_AYUV64,
 
             Pixel::P010LE => AV_PIX_FMT_P010LE,
@@ -1265,8 +1262,10 @@ impl From<Pixel> for AVPixelFormat {
             #[cfg(feature = "ffmpeg_6_1")]
             Pixel::GBRAP14LE => AV_PIX_FMT_GBRAP14LE,
 
-            #[cfg(feature = "rk")]
+            #[cfg(all(feature = "rk", target_arch = "aarch64"))]
             Pixel::NV15 => AV_PIX_FMT_NV15,
+            #[cfg(all(feature = "rk", target_arch = "aarch64"))]
+            Pixel::NV20 => AVPixelFormat::AV_PIX_FMT_NV20,
 
             #[cfg(feature = "ffmpeg_7_0")]
             Pixel::D3D12 => AV_PIX_FMT_D3D12,
