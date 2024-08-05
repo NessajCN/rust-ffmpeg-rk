@@ -1,7 +1,7 @@
 [package]
-name = "ffmpeg-next"
-version = "7.0.2"
-build = "build.rs"
+name    = "ffmpeg-next"
+version = "7.0.4"
+build   = "build.rs"
 
 authors = [
     "meh. <meh@schizofreni.co>",
@@ -125,5 +125,5 @@ version = "0.25"
 optional = true
 
 [dependencies.ffmpeg-sys-next]
-version = "7.0.0"
+version = "7.0.2"
 default-features = false
